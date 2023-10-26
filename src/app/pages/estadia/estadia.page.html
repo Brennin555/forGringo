@@ -10,4 +10,25 @@
       <ion-title size="large">estadia</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div class="container-cep">
+    <ion-input
+      [(ngModel)]="cep"
+      maxlength="9"
+      class="input-login-cad"
+      placeholder="CEP"
+      inputmode="numeric"
+
+    >
+      <ion-icon
+        class="icon-login-cad"
+        name="location-outline"
+        slot="start"
+      ></ion-icon>
+    </ion-input>
+    <ion-button class="button-cep" (click)="buscarCEP(cep)">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-button>
+  </div>
+
 </ion-content>

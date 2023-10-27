@@ -12,7 +12,7 @@ import { NavegacaoService } from './navegacao.service';
   providedIn: 'root',
 })
 export class FirebaseService {
-  private userID: any;
+  public userID: any;
 
   constructor(
     private auth: AngularFireAuth,
@@ -51,7 +51,7 @@ export class FirebaseService {
       );
       const uid = userCredential?.user?.uid;
 
-      this.saveDetails({
+      this.saveDetails('users',{
         ...data,
         uid: uid,
       });
@@ -63,8 +63,8 @@ export class FirebaseService {
     }
   }
 
-  public saveDetails(data: any) {
-    return this.fireStore.collection('users').doc(data.uid).set(data);
+  public saveDetails(colecao:any ,data: any) {
+    return this.fireStore.collection(colecao).doc(data.uid).set(data);
   }
 
   public getUserID() {

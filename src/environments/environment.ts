@@ -3,12 +3,11 @@ export const environment = {
   production: false,
   //firebase conta BancosDev
   firebase: {
-    apiKey: "AIzaSyDeXzlL4zUc4FJgq94oIO4BnLnuVpj93b8",
-    authDomain: "tutorial-e3acc.firebaseapp.com",
-    projectId: "tutorial-e3acc",
-    storageBucket: "tutorial-e3acc.appspot.com",
-    messagingSenderId: "869336423075",
-    appId: "1:869336423075:web:cf9b639680b06246c97d16",
-    measurementId: "G-YZZKVBDTFL"
+    apiKey: "AIzaSyCHCMs2sxNiJCi__agGchXIF7qBT5X-Ffo",
+    authDomain: "gringo-61b64.firebaseapp.com",
+    projectId: "gringo-61b64",
+    storageBucket: "gringo-61b64.appspot.com",
+    messagingSenderId: "596331009397",
+    appId: "1:596331009397:web:c7e3e8d2b989997653ef3c"
   },
 };

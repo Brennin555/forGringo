@@ -10,4 +10,66 @@
       <ion-title size="large">lugares-favoritos</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div class="container-cep">
+    <ion-input
+      [(ngModel)]="lugar.cep"
+      maxlength="9"
+      class="input-login-cad"
+      placeholder="CEP"
+      inputmode="numeric"
+    >
+      <ion-icon
+        class="icon-login-cad"
+        name="location-outline"
+        slot="start"
+      ></ion-icon>
+    </ion-input>
+    <ion-button class="button-cep" (click)="buscarCEP(lugar.cep)">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div>
+    <ion-input [(ngModel)]="lugar.rua" class="input-login-cad" placeholder="Rua">
+      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input [(ngModel)]="lugar.bairro" class="input-login-cad" placeholder="Bairro">
+      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input [(ngModel)]="lugar.cidade" class="input-login-cad" placeholder="Cidade">
+      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input [(ngModel)]="lugar.estado" class="input-login-cad" placeholder="Estado">
+      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input [(ngModel)]="lugar.numero" class="input-login-cad" placeholder="Número">
+      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input [(ngModel)]="lugar.complemento" class="input-login-cad" placeholder="Complemento">
+      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-button class="button-login-cad" (click)="cadastrarLugar()">
+      Salvar
+    </ion-button>
+  </div>
+
 </ion-content>

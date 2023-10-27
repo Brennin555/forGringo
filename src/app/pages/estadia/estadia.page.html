@@ -13,12 +13,11 @@
 
   <div class="container-cep">
     <ion-input
-      [(ngModel)]="cep"
+      [(ngModel)]="estadia.cep"
       maxlength="9"
       class="input-login-cad"
       placeholder="CEP"
       inputmode="numeric"
-
     >
       <ion-icon
         class="icon-login-cad"
@@ -26,8 +25,53 @@
         slot="start"
       ></ion-icon>
     </ion-input>
-    <ion-button class="button-cep" (click)="buscarCEP(cep)">
+    <ion-button class="button-cep" (click)="buscarCEP(estadia.cep)">
       <ion-icon name="search-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div>
+    <ion-input [(ngModel)]="estadia.rua" class="input-login-cad" placeholder="Rua">
+      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input [(ngModel)]="estadia.bairro" class="input-login-cad" placeholder="Bairro">
+      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input [(ngModel)]="estadia.cidade" class="input-login-cad" placeholder="Cidade">
+      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input [(ngModel)]="estadia.estado" class="input-login-cad" placeholder="Estado">
+      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input [(ngModel)]="estadia.numero" class="input-login-cad" placeholder="Número">
+      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-input [(ngModel)]="estadia.complemento" class="input-login-cad" placeholder="Complemento">
+      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
+    </ion-input>
+  </div>
+
+  <div>
+    <ion-button class="button-login-cad" (click)="cadastrarEstadia()">
+      Salvar
+    </ion-button>
+    <ion-button class="button-login-cad" (click)="abrirMapa()">
+      Abrir no mapa
     </ion-button>
   </div>
 

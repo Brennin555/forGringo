@@ -25,6 +25,10 @@ export class CadastroPage implements OnInit {
 
   ngOnInit() {}
 
+  public navBack(): void {
+    this.nav.navegarPara('login');
+  }
+
   public realizarCadastro() {
     console.log(this.senha1, this.senha2);
 

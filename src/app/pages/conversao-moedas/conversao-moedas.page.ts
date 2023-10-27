@@ -1,5 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
 import { MoedasService } from 'src/app/services/moedas.service';
+import { NavegacaoService } from 'src/app/services/navegacao.service';
 
 @Component({
   selector: 'app-conversao-moedas',
@@ -16,10 +18,15 @@ export class ConversaoMoedasPage implements OnInit {
 
   constructor(
     private moedasService: MoedasService,
+    private navService: NavegacaoService
   ) { }
 
   ngOnInit() {
     this.buscarMoedas();
+  }
+
+  public navBack(): void {
+    this.navService.navegarPara('home');
   }
 
   async buscarMoedas() {

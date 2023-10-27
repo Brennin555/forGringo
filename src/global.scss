@@ -26,7 +26,10 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 .content-basico {
-  --background: linear-gradient(180deg, #ffffff 40.61%, rgb(15, 0, 102) 116.69%);;
+  --background: #e0e0c3;
+  // --background: linear-gradient(180deg, #FFFF99 40.61%, rgb(15, 0, 102) 116.69%);
+  // --background: linear-gradient(180deg, #FFFF99 40.61%, #004100 116.69%);
+
   --background-size: cover;
   z-index: 5;
   position: sticky;

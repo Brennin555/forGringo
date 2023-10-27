@@ -1,13 +1,15 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="login"></ion-back-button>
-    </ion-buttons>
+    <ion-icon
+      (click)="navBack()"
+      name="arrow-back-outline"
+      class="options-icon"
+    ></ion-icon>
+    <ion-buttons slot="start"> </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="content-basico">
-
   <div class="container-login">
     <h1 class="titulo-login-cad">Cadastre-se</h1>
 
@@ -19,8 +21,8 @@
       <ion-icon class="icon-login-cad" name="person" slot="start"></ion-icon>
     </ion-input>
 
-  <ion-input
-  [(ngModel)]="user.email"
+    <ion-input
+      [(ngModel)]="user.email"
       class="input-login-cad"
       placeholder="Email"
       inputmode="email"

@@ -1,5 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-icon
+    (click)="navBack()"
+    name="arrow-back-outline"
+    class="options-icon"
+  ></ion-icon>
     <ion-title>conversao-moedas</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -42,13 +47,13 @@
     <ion-label>
       =
     </ion-label>
-    <ion-input
-    [(ngModel)]="resultado"
+    <ion-label
     class="input-login-cad"
     placeholder="Valor convertido"
     inputmode="numeric"
     >
-    </ion-input>
+    {{valor1 * taxa}}
+    </ion-label>
 
   </div>
 

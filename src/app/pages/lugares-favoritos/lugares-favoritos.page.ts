@@ -4,6 +4,7 @@ import { Endereco } from 'src/app/interfaces/endereco';
 import { ToastService } from 'src/app/services/toast.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { NavegacaoService } from 'src/app/services/navegacao.service';
 
 @Component({
   selector: 'app-lugares-favoritos',
@@ -20,10 +21,15 @@ export class LugaresFavoritosPage implements OnInit {
     private cepService: CepService,
     private toast: ToastService,
     private firebaseService: FirebaseService,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private navService: NavegacaoService
   ) { }
 
   ngOnInit() {
+  }
+
+  public navBack(): void {
+    this.navService.navegarPara('home');
   }
 
   private tiraTracoCEP(cep: string): string {

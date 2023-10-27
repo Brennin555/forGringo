@@ -25,3 +25,18 @@
 #container a {
   text-decoration: none;
 }
+
+.cardHome{
+  border: #00065c solid 0.3rem;
+  //background-color:  #FFFF99
+}
+
+.botoesHome{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.botaoHome{
+  --background: #004100;
+}

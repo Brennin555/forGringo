@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavegacaoService } from 'src/app/services/navegacao.service';
 
 @Component({
   selector: 'app-gerencia-perfil',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GerenciaPerfilPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private navService: NavegacaoService
+  ) { }
 
   ngOnInit() {
+  }
+
+  public navBack(): void {
+    this.navService.navegarPara('home');
   }
 
 }

@@ -10,12 +10,16 @@ export class ConversaoMoedasPage implements OnInit {
 
   listaMoedas: any[] = [];
   moedaEscolhida = this.moedasService.infosMoeda;
+  valor1: number = 0;
+  taxa: number = 0;
+  resultado: number = this.valor1 * this.taxa ;
 
   constructor(
     private moedasService: MoedasService,
   ) { }
 
   ngOnInit() {
+    this.buscarMoedas();
   }
 
   async buscarMoedas() {
@@ -27,7 +31,13 @@ export class ConversaoMoedasPage implements OnInit {
   }
 
   atualizarMoedaEscolhida(event: CustomEvent) {
-    this.moedaEscolhida = event.detail.value;
+    let nomeMoedaEscolhida = event.detail.value;
+    this.listaMoedas.forEach((moeda) => {
+      if (moeda.name === nomeMoedaEscolhida) {
+        this.moedaEscolhida = moeda;
+        this.taxa = Number(this.moedaEscolhida.ask);
+      }
+    });
     console.log('Moeda Escolhida:', this.moedaEscolhida);
   }
 }

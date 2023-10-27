@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="content-basico">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">conversao-moedas</ion-title>
@@ -14,7 +14,10 @@
   <ion-list>
     <ion-item>
       <ion-select (ionChange)="atualizarMoedaEscolhida($event)">
-        <ion-select-option *ngFor="let moeda of listaMoedas" [value]="moeda.name">
+        <ion-select-option
+          *ngFor="let moeda of listaMoedas"
+          [value]="moeda.name"
+        >
           {{moeda.name}}
         </ion-select-option>
       </ion-select>
@@ -22,11 +25,31 @@
   </ion-list>
 
   <div>
-    Moeda escolhida: {{moedaEscolhida.name}}
-    Taxa de venda: {{moedaEscolhida.ask}}
+    <ion-item> Moeda: {{moedaEscolhida.name}} </ion-item>
+    <ion-item> Taxa de venda:{{moedaEscolhida.ask}} </ion-item>
   </div>
 
-  <ion-button (click)="buscarMoedas()">
+  <ion-button (click)="buscarMoedas()"> Atualizar valores </ion-button>
 
-  </ion-button>
+  <div>
+    <ion-input
+    [(ngModel)]="valor1"
+    class="input-login-cad"
+    placeholder="Valor para converter"
+    inputmode="numeric"
+    >
+    </ion-input>
+    <ion-label>
+      =
+    </ion-label>
+    <ion-input
+    [(ngModel)]="resultado"
+    class="input-login-cad"
+    placeholder="Valor convertido"
+    inputmode="numeric"
+    >
+    </ion-input>
+
+  </div>
+
 </ion-content>

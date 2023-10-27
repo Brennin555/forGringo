@@ -1,5 +1,6 @@
 export interface Endereco {
   uid: string;
+  nome: string;
   cep : string;
   rua: string;
   bairro: string;

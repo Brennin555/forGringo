@@ -14,6 +14,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class EstadiaPage implements OnInit {
 
   estadia = {} as Endereco;
+  editar = false;
 
   constructor(
     private cepService: CepService,
@@ -45,9 +46,10 @@ export class EstadiaPage implements OnInit {
 
   cadastrarEstadia() {
 
-    this.estadia.uid = this.firebaseService.userID;
-    this.firestore.collection('estadias').add(this.estadia);
-    this.toast.showToast('Estadia cadastrada com sucesso!');
+    // this.estadia.uid = this.firebaseService.userID;
+    // this.firestore.collection('estadias').add(this.estadia);
+    // this.toast.showToast('Estadia cadastrada com sucesso!');
+    this.editar = false;
   }
 
   abrirMapa() {

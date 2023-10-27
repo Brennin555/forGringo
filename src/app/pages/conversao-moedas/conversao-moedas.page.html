@@ -10,4 +10,23 @@
       <ion-title size="large">conversao-moedas</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list>
+    <ion-item>
+      <ion-select (ionChange)="atualizarMoedaEscolhida($event)">
+        <ion-select-option *ngFor="let moeda of listaMoedas" [value]="moeda.name">
+          {{moeda.name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div>
+    Moeda escolhida: {{moedaEscolhida.name}}
+    Taxa de venda: {{moedaEscolhida.ask}}
+  </div>
+
+  <ion-button (click)="buscarMoedas()">
+
+  </ion-button>
 </ion-content>

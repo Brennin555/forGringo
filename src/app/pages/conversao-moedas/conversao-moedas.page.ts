@@ -13,8 +13,8 @@ export class ConversaoMoedasPage implements OnInit {
   listaMoedas: any[] = [];
   moedaEscolhida = this.moedasService.infosMoeda;
   valor1: number = 0;
+  valor2: number = 0;
   taxa: number = 0;
-  resultado: number = this.valor1 * this.taxa ;
 
   constructor(
     private moedasService: MoedasService,

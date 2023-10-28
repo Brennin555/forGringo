@@ -18,6 +18,9 @@ export class LugaresFavoritosPage implements OnInit {
   addLugar = false;
   editaLugar = false;
 
+  nota: number = 5;
+  list: any[] = new Array(5);
+
 
   constructor(
 
@@ -66,6 +69,20 @@ export class LugaresFavoritosPage implements OnInit {
   }
 
   abrirMapa(i: number) {
+    if(this.lugares[i].rua == undefined){
+      this.lugares[i].rua = '';
+    }
+    if(this.lugares[i].numero == undefined){
+      this.lugares[i].numero = '';
+    }
+    if(this.lugares[i].cidade == undefined){
+      this.lugares[i].cidade = '';
+    }
+    if(this.lugares[i].estado == undefined){
+      this.lugares[i].estado = '';
+    }
+
+
     let link = 'https://www.google.com/maps/search/?api=1&query=' + this.lugares[i].rua + ',' + this.lugares[i].numero + ',' + this.lugares[i].cidade + ',' + this.lugares[i].estado;
     console.log(link);
     window.open(link, '_blank');
@@ -75,6 +92,15 @@ export class LugaresFavoritosPage implements OnInit {
     this.lugar = this.lugares[i];
     this.addLugar = true;
     this.editaLugar = true;
+  }
+
+  excluirLocal(i: number){
+    this.lugares.splice(i, 1);
+  }
+
+  review(i: number) {
+    this.nota = i + 1;
+    this.lugar.avaliacao = this.nota;
   }
 
 

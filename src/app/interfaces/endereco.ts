@@ -8,6 +8,7 @@ export interface Endereco {
   estado: string;
   complemento: string;
   numero: string;
+
   comentario: string;
   avaliacao: number;
 }

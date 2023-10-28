@@ -59,6 +59,19 @@ export class EstadiaPage implements OnInit {
   }
 
   abrirMapa() {
+    if(this.estadia.rua == undefined){
+      this.estadia.rua = '';
+    }
+    if(this.estadia.numero == undefined){
+      this.estadia.numero = '';
+    }
+    if(this.estadia.cidade == undefined){
+      this.estadia.cidade = '';
+    }
+    if(this.estadia.estado == undefined){
+      this.estadia.estado = '';
+    }
+
     let link = 'https://www.google.com/maps/search/?api=1&query=' + this.estadia.rua + ',' + this.estadia.numero + ',' + this.estadia.cidade + ',' + this.estadia.estado;
     console.log(link);
     window.open(link, '_blank');

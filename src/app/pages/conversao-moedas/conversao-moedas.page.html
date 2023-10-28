@@ -27,7 +27,7 @@
     </ion-item>
   </ion-list>
 
-  <div *ngIf="moedaEscolhida">
+  <div *ngIf="moedaEscolhida.name != ''">
     <div>
       <!-- <ion-item> Moeda: {{moedaEscolhida.name}} </ion-item> -->
       <ion-item> Taxa de venda: {{moedaEscolhida.ask}} </ion-item>
@@ -40,7 +40,9 @@
       >
     </div>
     <div class="itens-conversao">
-      <ion-button (click)="buscarMoedas()" class="botao"> Atualizar valores </ion-button>
+      <ion-button (click)="buscarMoedas()" class="botao">
+        Atualizar valores
+      </ion-button>
     </div>
 
     <div class="itens-conversao">
@@ -64,6 +66,30 @@
         inputmode="numeric"
       >
         {{valor1 * taxa}}
+      </ion-label>
+    </div>
+
+    <!-- Segunda operação -->
+    <div class="itens-conversao">
+      <ion-label> BR$ </ion-label>
+      <ion-label class="igual-conversao"></ion-label>
+      <ion-label> {{moedaEscolhida.code}} </ion-label>
+    </div>
+    <div class="itens-conversao">
+      <ion-input
+        [(ngModel)]="valor2"
+        class="input-conversao"
+        placeholder="Valor para converter"
+        inputmode="numeric"
+      >
+      </ion-input>
+      <ion-label class="igual-conversao"> = </ion-label>
+      <ion-label
+        class="item-conversao"
+        placeholder="Valor convertido"
+        inputmode="numeric"
+      >
+        {{valor2 / taxa}}
       </ion-label>
     </div>
   </div>

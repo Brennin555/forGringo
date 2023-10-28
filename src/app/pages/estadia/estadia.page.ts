@@ -15,6 +15,7 @@ import { NavegacaoService } from 'src/app/services/navegacao.service';
 export class EstadiaPage implements OnInit {
 
   estadia = {} as Endereco;
+  estadiaAtual = {} as Endereco;
   editar = false;
 
   constructor(
@@ -44,10 +45,10 @@ export class EstadiaPage implements OnInit {
     );
     console.log(meuEndereco);
 
-    this.estadia.rua = meuEndereco.logradouro;
-    this.estadia.bairro = meuEndereco.bairro;
-    this.estadia.cidade = meuEndereco.localidade;
-    this.estadia.estado = meuEndereco.uf;
+    this.estadiaAtual.rua = meuEndereco.logradouro;
+    this.estadiaAtual.bairro = meuEndereco.bairro;
+    this.estadiaAtual.cidade = meuEndereco.localidade;
+    this.estadiaAtual.estado = meuEndereco.uf;
   }
 
   cadastrarEstadia() {
@@ -55,6 +56,7 @@ export class EstadiaPage implements OnInit {
     // this.estadia.uid = this.firebaseService.userID;
     // this.firestore.collection('estadias').add(this.estadia);
     // this.toast.showToast('Estadia cadastrada com sucesso!');
+    this.estadia = {...this.estadiaAtual};
     this.editar = false;
   }
 

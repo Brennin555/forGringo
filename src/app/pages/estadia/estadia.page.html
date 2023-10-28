@@ -19,7 +19,7 @@
   <div *ngIf="editar">
     <div>
       <ion-input
-        [(ngModel)]="estadia.nome"
+        [(ngModel)]="estadiaAtual.nome"
         class="input-login-cad"
         placeholder="Nome"
       >
@@ -28,21 +28,21 @@
 
     <div class="container-cep">
       <ion-input
-        [(ngModel)]="estadia.cep"
+        [(ngModel)]="estadiaAtual.cep"
         maxlength="9"
         class="input-login-cad"
         placeholder="CEP"
         inputmode="numeric"
       >
       </ion-input>
-      <ion-button class="button-cep" (click)="buscarCEP(estadia.cep)">
+      <ion-button class="button-cep" (click)="buscarCEP(estadiaAtual.cep)">
         <ion-icon name="search-outline"></ion-icon>
       </ion-button>
     </div>
 
     <div>
       <ion-input
-        [(ngModel)]="estadia.rua"
+        [(ngModel)]="estadiaAtual.rua"
         class="input-login-cad"
         placeholder="Rua"
       >
@@ -51,7 +51,7 @@
 
     <div>
       <ion-input
-        [(ngModel)]="estadia.bairro"
+        [(ngModel)]="estadiaAtual.bairro"
         class="input-login-cad"
         placeholder="Bairro"
       >
@@ -60,7 +60,7 @@
 
     <div>
       <ion-input
-        [(ngModel)]="estadia.cidade"
+        [(ngModel)]="estadiaAtual.cidade"
         class="input-login-cad"
         placeholder="Cidade"
       >
@@ -69,7 +69,7 @@
 
     <div>
       <ion-input
-        [(ngModel)]="estadia.estado"
+        [(ngModel)]="estadiaAtual.estado"
         class="input-login-cad"
         placeholder="Estado"
       >
@@ -78,7 +78,7 @@
 
     <div>
       <ion-input
-        [(ngModel)]="estadia.numero"
+        [(ngModel)]="estadiaAtual.numero"
         class="input-login-cad"
         placeholder="Número"
       >
@@ -87,7 +87,7 @@
 
     <div>
       <ion-input
-        [(ngModel)]="estadia.complemento"
+        [(ngModel)]="estadiaAtual.complemento"
         class="input-login-cad"
         placeholder="Complemento"
       >

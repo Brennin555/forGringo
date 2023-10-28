@@ -26,8 +26,9 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 .content-basico {
+   --background: #8aff94;
   // --background: #29db38;
-  --background: linear-gradient(180deg, #009600 40.61%, #003b00 116.69%);
+  // --background: linear-gradient(180deg, #009600 40.61%, #003b00 116.69%); ******
   // --background: #e0e0c3;
   // --background: linear-gradient(180deg, #FFFF99 40.61%, rgb(15, 0, 102) 116.69%);
   // --background: linear-gradient(180deg, #FFFF99 40.61%, #004100 116.69%);
@@ -191,6 +192,11 @@ ion-back-button {
   }
 
   .botao{
+    --background: #004100;
+    width: auto;
+  }
+
+  .link{
     --background: #004100;
     width: auto;
   }

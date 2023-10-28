@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NavegacaoService } from 'src/app/services/navegacao.service';
-import { ActionSheetController, AlertController, ToastController } from '@ionic/angular';
+import {
+  ActionSheetController,
+  AlertController,
+  ToastController,
+} from '@ionic/angular';
+import { Tarefa } from 'src/app/interfaces/tarefa';
 //import { stringify } from 'querystring';
 
 @Component({
@@ -9,7 +14,25 @@ import { ActionSheetController, AlertController, ToastController } from '@ionic/
   styleUrls: ['./lista-de-tarefas.page.scss'],
 })
 export class ListaDeTarefasPage implements OnInit {
-  tasks: any[] = [];
+  tarefas: any[] = [];
+  tarefa = {} as Tarefa;
+  editarTarefa = false;
+  addTarefa = false;
+  escolherIcone = false;
+  icones = [
+    '',
+    'home-outline',
+    'person-outline',
+    'people-outline',
+    'airplane-outline',
+    'cash-outline',
+    'help-outline',
+    'camera-outline',
+    'alarm-outline',
+    'calendar-number-outline',
+    'fast-food-outline',
+  ];
+
   constructor(
     private navService: NavegacaoService,
     private alertCtrl: AlertController,
@@ -19,12 +42,11 @@ export class ListaDeTarefasPage implements OnInit {
     let taskJson = localStorage.getItem('taskDb');
 
     if (taskJson != null) {
-      this.tasks = JSON.parse(taskJson);
+      this.tarefas = JSON.parse(taskJson);
     }
   }
 
-  async ngOnInit() {
-  }
+  async ngOnInit() {}
 
   public navBack(): void {
     this.navService.navegarPara('home');
@@ -88,39 +110,31 @@ export class ListaDeTarefasPage implements OnInit {
       return;
     }
 
-    let task = {
-      name: newTask,
-      done: false,
-      info: detalhes,
-      cat: categoria,
-      color: 'success',
-    };
+    this.tarefas.push(this.tarefa);
 
-    this.tasks.push(task);
+    // if (this.tarefa.categoria == 1) {
+    //   this.tarefa.cor = 'categoria1';
+    // }
+    // if (this.tarefa.categoria == 2) {
+    //   this.tarefa.cor = 'categoria2';
+    // }
+    // if (this.tarefa.categoria == 3) {
+    //   this.tarefa.cor = 'categoria3';
+    // }
+    // if (this.tarefa.categoria == 4) {
+    //   this.tarefa.cor = 'categoria4';
+    // }
+    // if (this.tarefa.categoria == 5) {
+    //   this.tarefa.cor = 'categoria5';
+    // }
 
-    if (task.cat == 1) {
-      task.color = 'categoria1';
-    }
-    if (task.cat == 2) {
-      task.color = 'categoria2';
-    }
-    if (task.cat == 3) {
-      task.color = 'categoria3';
-    }
-    if (task.cat == 4) {
-      task.color = 'categoria4';
-    }
-    if (task.cat == 5) {
-      task.color = 'categoria5';
-    }
-
-    //this.tasks.push(task);
+    //this.this.tarefas.push(this.tarefa);
 
     this.updateLocalStorage();
   }
 
   updateLocalStorage() {
-    localStorage.setItem('taskDb', JSON.stringify(this.tasks));
+    localStorage.setItem('taskDb', JSON.stringify(this.tarefas));
   }
 
   async openActions(task: any) {
@@ -128,10 +142,10 @@ export class ListaDeTarefasPage implements OnInit {
       header: 'O QUE DESEJA FAZER?',
       buttons: [
         {
-          text: task.done ? 'Desmarcar' : 'Marcar',
-          icon: task.done ? 'radio-button-off' : 'checkmark-circle',
+          text: this.tarefa.feita ? 'Desmarcar' : 'Marcar',
+          icon: this.tarefa.feita ? 'radio-button-off' : 'checkmark-circle',
           handler: () => {
-            task.done = !task.done;
+            task.feita = !task.feita;
 
             this.updateLocalStorage();
           },
@@ -158,7 +172,7 @@ export class ListaDeTarefasPage implements OnInit {
   }
 
   delete(task: any) {
-    this.tasks = this.tasks.filter((taskArray) => task != taskArray);
+    this.tarefas = this.tarefas.filter((taskArray) => task != taskArray);
 
     this.updateLocalStorage();
   }
@@ -181,5 +195,30 @@ export class ListaDeTarefasPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  novaTarefa() {
+    this.tarefa = {} as Tarefa;
+    this.addTarefa = true;
+  }
+
+  cadastrarTarefa() {
+    this.addTarefa = false;
+    if (this.editarTarefa == false) {
+      this.tarefas.push(this.tarefa);
+    }
+  }
+
+  showIcones() {
+    this.escolherIcone = true;
+  }
+
+  closeIcones() {
+    this.escolherIcone = false;
+  }
+
+  defineCategoria(i: number) {
+    console.log(this.icones[i]);
+    this.tarefa.categoria = this.icones[i];
   }
 }

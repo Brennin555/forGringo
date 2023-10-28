@@ -10,16 +10,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="content-basico">
-  <ion-list>
+
+  <ion-list *ngIf="!addTarefa">
     <ion-item-sliding *ngFor="let tarefa of tarefas">
       <ion-item (click)="openActions(tarefa)">
         <ion-label *ngIf="!tarefa.feita" color="{{tarefa.cor}}"
-          ><ion-icon name="{{tarefa.categoria}}"></ion-icon> :
+          ><ion-icon name="{{tarefa.categoria}}" size="large"></ion-icon> :
           {{tarefa.nome}}</ion-label
         >
         <ion-label *ngIf="tarefa.feita" color="{{tarefa.cor}}"
           ><del
-            ><ion-icon name="{{tarefa.categoria}}"></ion-icon> :
+            ><ion-icon name="{{tarefa.categoria}}" size="large"></ion-icon> :
             {{tarefa.nome}}</del
           ></ion-label
         >
@@ -44,7 +45,7 @@
     </ion-item-sliding>
   </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!addTarefa">
     <ion-fab-button (click)="novaTarefa()" color="primary">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
@@ -53,20 +54,12 @@
   <div *ngIf="addTarefa == true">
     <div>
       <ion-input
-        [(ngModel)]="tarefa.nome"
+        [(ngModel)]="tarefaAtual.nome"
         class="input-login-cad"
         placeholder="Tarefa"
       >
       </ion-input>
     </div>
-
-    <!-- <ion-accordion-group>
-      <ion-accordion *ngFor="let icone of icones, let i=index" [value]="i">
-      <ion-item>
-        <ion-icon (click)="defineCategoria(i)" name="{{icone}}"></ion-icon>
-      </ion-item>
-      </ion-accordion>
-    </ion-accordion-group> -->
 
     <ion-button
       *ngIf="escolherIcone == false"
@@ -75,13 +68,17 @@
     >
       Escolher Icone</ion-button
     >
-    <ion-input class="input-login-cad" *ngIf="escolherIcone == true">
-      <ion-item *ngFor="let icone of icones; let i=index">
+    <!-- <ion-input class="input-login-cad" *ngIf="escolherIcone == true"> -->
+    <div *ngIf="escolherIcone == true" class="iconesTarefas">
+      <div *ngFor="let icone of icones; let i=index" class="iconeTarefa">
         <ion-icon (click)="defineCategoria(i)" name="{{icone}}"></ion-icon>
-      </ion-item>
-    </ion-input>
-    <div *ngIf="escolherIcone == true"
-      >Icone Selecionado: <ion-icon name="{{tarefa.categoria}}" size="large"></ion-icon>
+      </div>
+    </div>
+    <!-- </ion-input> -->
+
+    <div>
+      Icone Selecionado:
+      <ion-icon name="{{tarefaAtual.categoria}}" size="large"></ion-icon>
     </div>
     <ion-button
       *ngIf="escolherIcone == true"
@@ -93,7 +90,7 @@
 
     <div>
       <ion-input
-        [(ngModel)]="tarefa.descricao"
+        [(ngModel)]="tarefaAtual.descricao"
         class="input-login-cad"
         placeholder="Descrição"
       >
@@ -103,6 +100,9 @@
     <div class="alinharBotoes">
       <ion-button class="botao" (click)="cadastrarTarefa()">
         Salvar
+      </ion-button>
+      <ion-button class="botao" (click)="cancelarTarefa()">
+        Cancelar
       </ion-button>
     </div>
   </div>

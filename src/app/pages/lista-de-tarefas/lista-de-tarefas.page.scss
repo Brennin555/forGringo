@@ -1,0 +1,22 @@
+.iconesTarefas{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.iconeTarefa {
+  // background-color: aquamarine;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 15%; /* Define a largura para acomodar 5 ícones por linha */
+  margin-right: 5%; /* Espaço entre os ícones, você pode ajustar conforme necessário */
+  margin-top: 1rem;
+
+  ion-icon {
+    font-size: 40px; /* Tamanho dos ícones, você pode ajustar conforme necessário */
+  }
+
+}
+
+

@@ -5,4 +5,5 @@ export interface Tarefa {
   categoria: string;
   cor: string;
   descricao: string;
+  indice: number;
 }

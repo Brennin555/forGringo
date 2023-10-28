@@ -16,11 +16,14 @@ import { Tarefa } from 'src/app/interfaces/tarefa';
 export class ListaDeTarefasPage implements OnInit {
   tarefas: any[] = [];
   tarefa = {} as Tarefa;
+  tarefaAtual = {} as Tarefa;
+
   editarTarefa = false;
   addTarefa = false;
   escolherIcone = false;
+
   icones = [
-    '',
+    'arrow-forward-outline',
     'home-outline',
     'person-outline',
     'people-outline',
@@ -111,25 +114,6 @@ export class ListaDeTarefasPage implements OnInit {
     }
 
     this.tarefas.push(this.tarefa);
-
-    // if (this.tarefa.categoria == 1) {
-    //   this.tarefa.cor = 'categoria1';
-    // }
-    // if (this.tarefa.categoria == 2) {
-    //   this.tarefa.cor = 'categoria2';
-    // }
-    // if (this.tarefa.categoria == 3) {
-    //   this.tarefa.cor = 'categoria3';
-    // }
-    // if (this.tarefa.categoria == 4) {
-    //   this.tarefa.cor = 'categoria4';
-    // }
-    // if (this.tarefa.categoria == 5) {
-    //   this.tarefa.cor = 'categoria5';
-    // }
-
-    //this.this.tarefas.push(this.tarefa);
-
     this.updateLocalStorage();
   }
 
@@ -159,6 +143,15 @@ export class ListaDeTarefasPage implements OnInit {
           },
         },
         {
+          text: 'Editar',
+          icon: 'build-outline',
+          handler: () => {
+            console.log('Search clicked');
+            //pegar tarefa e indice dela
+            this.editaTarefa(task, this.tarefas.indexOf(task));
+          },
+        },
+        {
           text: 'Cancelar',
           icon: 'close',
           role: 'cancel',
@@ -181,7 +174,7 @@ export class ListaDeTarefasPage implements OnInit {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
       header: task.name,
-      subHeader: 'Categoria :     ' + task.cat,
+      subHeader: 'Categoria :     ' + task.categoria,
       message: task.info,
 
       buttons: [
@@ -198,15 +191,34 @@ export class ListaDeTarefasPage implements OnInit {
   }
 
   novaTarefa() {
-    this.tarefa = {} as Tarefa;
+    //inicia tarefaAtual vazia
+    this.tarefaAtual = {} as Tarefa;
     this.addTarefa = true;
+    this.editarTarefa = false;
+
   }
 
   cadastrarTarefa() {
+    this.tarefa = { ...this.tarefaAtual };
     this.addTarefa = false;
     if (this.editarTarefa == false) {
+      this.tarefa.indice = this.tarefas.length;
       this.tarefas.push(this.tarefa);
+    }else{
+      this.tarefas[this.tarefa.indice] = this.tarefa;
     }
+  }
+
+  editaTarefa(task: any, i: number) {
+    this.editarTarefa = true;
+    this.addTarefa = true;
+    this.tarefaAtual = { ...task };
+  }
+
+  cancelarTarefa() {
+    this.tarefaAtual = { ...this.tarefa };
+    this.addTarefa = false;
+    this.editarTarefa = false;
   }
 
   showIcones() {
@@ -219,6 +231,6 @@ export class ListaDeTarefasPage implements OnInit {
 
   defineCategoria(i: number) {
     console.log(this.icones[i]);
-    this.tarefa.categoria = this.icones[i];
+    this.tarefaAtual.categoria = this.icones[i];
   }
 }

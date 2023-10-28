@@ -1,4 +1,4 @@
-<ion-header [translucent]="true" class="content-basico">
+<ion-header [translucent]="true" >
   <ion-toolbar>
     <ion-icon
     (click)="navBack()"
@@ -9,72 +9,118 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">lugares-favoritos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="content-basico">
 
-  <div class="container-cep">
-    <ion-input
-      [(ngModel)]="lugar.cep"
-      maxlength="9"
-      class="input-login-cad"
-      placeholder="CEP"
-      inputmode="numeric"
-    >
-      <ion-icon
-        class="icon-login-cad"
-        name="location-outline"
-        slot="start"
-      ></ion-icon>
-    </ion-input>
-    <ion-button class="button-cep" (click)="buscarCEP(lugar.cep)">
-      <ion-icon name="search-outline"></ion-icon>
-    </ion-button>
+  <ion-accordion-group *ngIf="!addLugar">
+    <ion-accordion *ngFor="let lugar of lugares, let i=index" [value]="i">
+      <ion-item slot="header" color="light">
+        <ion-label>{{lugar.nome}}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+      {{lugar.rua}} {{lugar.numero}} {{lugar.bairro}} {{lugar.cidade}} -
+      {{lugar.estado}} {{lugar.complemento}}
+        <ion-button class="botao" (click) = "abrirMapa(i)">
+          Abrir no mapa
+        </ion-button>
+        <ion-button class="botao" (click) = "editarLocal(i)">
+          Editar
+        </ion-button>
+      </div>
+
+    </ion-accordion>
+  </ion-accordion-group>
+
+  <div *ngIf="addLugar">
+    <div>
+      <ion-input
+        [(ngModel)]="lugar.nome"
+        class="input-login-cad"
+        placeholder="Nome"
+      >
+      </ion-input>
+    </div>
+
+    <div class="container-cep">
+      <ion-input
+        [(ngModel)]="lugar.cep"
+        maxlength="9"
+        class="input-login-cad"
+        placeholder="CEP"
+        inputmode="numeric"
+      >
+      </ion-input>
+      <ion-button class="button-cep" (click)="buscarCEP(lugar.cep)">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div>
+      <ion-input
+        [(ngModel)]="lugar.rua"
+        class="input-login-cad"
+        placeholder="Rua"
+      >
+      </ion-input>
+    </div>
+
+    <div>
+      <ion-input
+        [(ngModel)]="lugar.bairro"
+        class="input-login-cad"
+        placeholder="Bairro"
+      >
+      </ion-input>
+    </div>
+
+    <div>
+      <ion-input
+        [(ngModel)]="lugar.cidade"
+        class="input-login-cad"
+        placeholder="Cidade"
+      >
+      </ion-input>
+    </div>
+
+    <div>
+      <ion-input
+        [(ngModel)]="lugar.estado"
+        class="input-login-cad"
+        placeholder="Estado"
+      >
+      </ion-input>
+    </div>
+
+    <div>
+      <ion-input
+        [(ngModel)]="lugar.numero"
+        class="input-login-cad"
+        placeholder="Número"
+      >
+      </ion-input>
+    </div>
+
+    <div>
+      <ion-input
+        [(ngModel)]="lugar.complemento"
+        class="input-login-cad"
+        placeholder="Complemento"
+      >
+      </ion-input>
+    </div>
   </div>
 
-  <div>
-    <ion-input [(ngModel)]="lugar.rua" class="input-login-cad" placeholder="Rua">
-      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
-    </ion-input>
+  <div class="alinharBotoes">
+    <div *ngIf="addLugar">
+      <ion-button class="botao" (click)="cadastrarLugar()">
+        Salvar
+      </ion-button>
+    </div>
   </div>
 
-  <div>
-    <ion-input [(ngModel)]="lugar.bairro" class="input-login-cad" placeholder="Bairro">
-      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
-    </ion-input>
-  </div>
-
-  <div>
-    <ion-input [(ngModel)]="lugar.cidade" class="input-login-cad" placeholder="Cidade">
-      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
-    </ion-input>
-  </div>
-
-  <div>
-    <ion-input [(ngModel)]="lugar.estado" class="input-login-cad" placeholder="Estado">
-      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
-    </ion-input>
-  </div>
-
-  <div>
-    <ion-input [(ngModel)]="lugar.numero" class="input-login-cad" placeholder="Número">
-      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
-    </ion-input>
-  </div>
-
-  <div>
-    <ion-input [(ngModel)]="lugar.complemento" class="input-login-cad" placeholder="Complemento">
-      <ion-icon class="icon-login-cad" name="home-outline" slot="start"></ion-icon>
-    </ion-input>
-  </div>
-
-  <div>
-    <ion-button class="button-login-cad" (click)="cadastrarLugar()">
-      Salvar
-    </ion-button>
-  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+    <ion-fab-button (click)="addEndereco()" *ngIf="!addLugar">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

@@ -14,7 +14,10 @@ import { NavegacaoService } from 'src/app/services/navegacao.service';
 export class LugaresFavoritosPage implements OnInit {
 
   lugar = {} as Endereco;
-  lugares = [];
+  lugares:Endereco[] = [];
+  addLugar = false;
+  editaLugar = false;
+
 
   constructor(
 
@@ -51,9 +54,28 @@ export class LugaresFavoritosPage implements OnInit {
 
   cadastrarLugar() {
 
-    this.lugar.uid = this.firebaseService.userID;
-    this.firestore.collection('estadias').add(this.lugar);
-    this.toast.showToast('Estadia cadastrada com sucesso!');
+    this.addLugar = false;
+    if(this.editaLugar == false){
+      this.lugares.push(this.lugar);
+    }
   }
+
+  addEndereco(){
+    this.lugar = {} as Endereco;
+    this.addLugar = true;
+  }
+
+  abrirMapa(i: number) {
+    let link = 'https://www.google.com/maps/search/?api=1&query=' + this.lugares[i].rua + ',' + this.lugares[i].numero + ',' + this.lugares[i].cidade + ',' + this.lugares[i].estado;
+    console.log(link);
+    window.open(link, '_blank');
+  }
+
+  editarLocal(i: number){
+    this.lugar = this.lugares[i];
+    this.addLugar = true;
+    this.editaLugar = true;
+  }
+
 
 }

@@ -34,7 +34,6 @@ export class ConversaoMoedasPage implements OnInit {
     this.listaMoedas = Object.values(this.listaMoedas);
 
     console.log(this.listaMoedas);
-    console.log(this.listaMoedas[0].name);
   }
 
   atualizarMoedaEscolhida(event: CustomEvent) {

@@ -55,50 +55,6 @@ export class ListaDeTarefasPage implements OnInit {
     this.navService.navegarPara('home');
   }
 
-  async showAdd() {
-    const alert = await this.alertCtrl.create({
-      cssClass: 'secondary',
-      header: 'Cadastrar nova tarefa:',
-      inputs: [
-        {
-          name: 'task',
-          type: 'text',
-          placeholder: 'O que deseja fazer?',
-        },
-        {
-          name: 'categoria',
-          type: 'number',
-          placeholder: 'Selecione uma Categoria',
-          min: 0,
-          max: 5,
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-          placeholder: 'Descrição da tarefa',
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel');
-          },
-        },
-        {
-          text: 'Adicionar',
-          handler: (form) => {
-            this.add(form.task, form.description, form.categoria);
-            console.log('Confirm Ok');
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-  }
 
   async add(newTask: string, detalhes: string, categoria: number) {
     if (newTask.trim().length < 1) {
@@ -114,7 +70,7 @@ export class ListaDeTarefasPage implements OnInit {
     }
 
     this.tarefas.push(this.tarefa);
-    this.updateLocalStorage();
+
   }
 
   updateLocalStorage() {
@@ -149,6 +105,15 @@ export class ListaDeTarefasPage implements OnInit {
             console.log('Search clicked');
             //pegar tarefa e indice dela
             this.editaTarefa(task, this.tarefas.indexOf(task));
+          },
+        },
+        {
+          text: 'Deletar',
+          icon: 'trash-outline',
+          handler: () => {
+            console.log('Search clicked');
+            //pegar tarefa e indice dela
+            this.delete(task);
           },
         },
         {
@@ -191,7 +156,6 @@ export class ListaDeTarefasPage implements OnInit {
   }
 
   novaTarefa() {
-    //inicia tarefaAtual vazia
     this.tarefaAtual = {} as Tarefa;
     this.addTarefa = true;
     this.editarTarefa = false;
@@ -207,12 +171,15 @@ export class ListaDeTarefasPage implements OnInit {
     }else{
       this.tarefas[this.tarefa.indice] = this.tarefa;
     }
+    this.updateLocalStorage();
   }
 
   editaTarefa(task: any, i: number) {
     this.editarTarefa = true;
     this.addTarefa = true;
     this.tarefaAtual = { ...task };
+
+    this.updateLocalStorage();
   }
 
   cancelarTarefa() {

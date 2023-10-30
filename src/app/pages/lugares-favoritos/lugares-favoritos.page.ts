@@ -29,13 +29,23 @@ export class LugaresFavoritosPage implements OnInit {
     private firebaseService: FirebaseService,
     private firestore: AngularFirestore,
     private navService: NavegacaoService
-  ) { }
+  ) {
+    let lugaresJson = localStorage.getItem('lugaresDb');
+
+    if (lugaresJson != null) {
+      this.lugares = JSON.parse(lugaresJson);
+    }
+  }
 
   ngOnInit() {
   }
 
   public navBack(): void {
     this.navService.navegarPara('home');
+  }
+
+  updateLocalStorage() {
+    localStorage.setItem('lugaresDb', JSON.stringify(this.lugares));
   }
 
   private tiraTracoCEP(cep: string): string {
@@ -61,10 +71,12 @@ export class LugaresFavoritosPage implements OnInit {
     if(this.editaLugar == false){
       this.lugares.push(this.lugar);
     }
+    this.updateLocalStorage();
   }
 
   addEndereco(){
     this.lugar = {} as Endereco;
+    this.lugar.avaliacao = 5;
     this.addLugar = true;
   }
 
@@ -92,10 +104,12 @@ export class LugaresFavoritosPage implements OnInit {
     this.lugar = this.lugares[i];
     this.addLugar = true;
     this.editaLugar = true;
+    this.updateLocalStorage();
   }
 
   excluirLocal(i: number){
     this.lugares.splice(i, 1);
+    this.updateLocalStorage();
   }
 
   review(i: number) {

@@ -25,13 +25,24 @@ export class EstadiaPage implements OnInit {
     private firestore: AngularFirestore,
     private navService: NavegacaoService
 
-  ) { }
+  ) {
+
+    let estadiaJson = localStorage.getItem('estadiaDb');
+
+    if (estadiaJson != null) {
+      this.estadia = JSON.parse(estadiaJson);
+    }
+   }
 
   ngOnInit() {
   }
 
   public navBack(): void {
     this.navService.navegarPara('home');
+  }
+
+  updateLocalStorage() {
+    localStorage.setItem('estadiaDb', JSON.stringify(this.estadia));
   }
 
   private tiraTracoCEP(cep: string): string {
@@ -58,6 +69,12 @@ export class EstadiaPage implements OnInit {
     // this.toast.showToast('Estadia cadastrada com sucesso!');
     this.estadia = {...this.estadiaAtual};
     this.editar = false;
+    this.updateLocalStorage();
+  }
+
+  editarEstadia() {
+    this.editar = true;
+    this.estadiaAtual = {...this.estadia};
   }
 
   abrirMapa() {

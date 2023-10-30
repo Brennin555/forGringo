@@ -13,11 +13,15 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 //CEP
 import { HttpClientModule } from '@angular/common/http';
+
+import { IonicStorageModule } from '@ionic/storage-angular';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     HttpClientModule,

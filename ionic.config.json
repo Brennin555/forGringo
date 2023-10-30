@@ -1,5 +1,7 @@
 {
   "name": "forGringo",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

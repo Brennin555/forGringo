@@ -1,7 +1,6 @@
 
 export const environment = {
   production: false,
-  //firebase conta BancosDev
   firebase: {
     apiKey: "AIzaSyCHCMs2sxNiJCi__agGchXIF7qBT5X-Ffo",
     authDomain: "gringo-61b64.firebaseapp.com",

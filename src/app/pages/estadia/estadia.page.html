@@ -108,7 +108,7 @@
       </ion-button>
     </div>
     <div>
-      <ion-button class="botao" (click)="abrirMapa()">
+      <ion-button *ngIf="!editar" class="botao" (click)="abrirMapa()">
         Abrir no mapa
       </ion-button>
     </div>

@@ -91,7 +91,7 @@ export class EstadiaPage implements OnInit {
       this.estadia.estado = '';
     }
 
-    let link = 'https://www.google.com/maps/search/?api=1&query=' + this.estadia.rua + ',' + this.estadia.numero + ',' + this.estadia.cidade + ',' + this.estadia.estado;
+    let link = 'https://www.google.com/maps/search/?api=1&query=' + this.estadia.rua + ',' + this.estadia.numero + ',' + this.estadia.bairro + ',' + this.estadia.cidade + ',' + this.estadia.estado;
     console.log(link);
     window.open(link, '_blank');
   }

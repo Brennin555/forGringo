@@ -27,8 +27,15 @@
 }
 
 .cardHome{
-  border: #00065c solid 0.3rem;
+  //border: #00065c solid 0.3rem;
+  border-radius: 15%;
+  min-width: 130px;
+  max-width: 43%;
+  min-height: 100px;
+  max-height: 25%;
+  padding: 10px;
   //background-color:  #FFFF99
+  text-align: center;
 }
 
 .botoesHome{
@@ -39,4 +46,18 @@
 
 .botaoHome{
   --background: #004100;
+}
+
+.container-card{
+  display: flex;
+  flex-wrap: wrap;
+  table-layout: fixed;
+  min-width: 360px;
+  max-width: 50%;
+  margin: auto;
+}
+
+.card-icon{
+  width: 70px;
+  height: 70px;
 }

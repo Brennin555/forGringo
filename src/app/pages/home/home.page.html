@@ -11,32 +11,37 @@
     </ion-button>
   </div>
 
-  <ion-card (click)="irParaEstadia()" class="cardHome">
-    <ion-card-header>
-      <ion-card-title>Sua estadia</ion-card-title>
-      <ion-card-subtitle>Para descansar</ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
+  <div class="container-card">
+    <ion-card (click)="irParaEstadia()" class="cardHome">
+      <ion-icon class="card-icon" name="bed"></ion-icon>
+      <ion-card-header>
+        <ion-card-title>Sua estadia</ion-card-title>
+        <ion-card-subtitle>Para descansar</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
 
-  <ion-card (click)="irParaConversaoMoedas()" class="cardHome">
-    <ion-card-header>
-      <ion-card-title>Conversão de moedas</ion-card-title>
-      <ion-card-subtitle>Para economizar</ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
+    <ion-card (click)="irParaConversaoMoedas()" class="cardHome">
+      <ion-icon class="card-icon" name="cash"></ion-icon>
+      <ion-card-header>
+        <ion-card-title>Conversão de moedas</ion-card-title>
+        <ion-card-subtitle>Para economizar</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
 
-  <ion-card (click)="irParaLugaresFavoritos()" class="cardHome">
-    <ion-card-header>
-      <ion-card-title>Lugares favoritos</ion-card-title>
-      <ion-card-subtitle>Para eternizar</ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
+    <ion-card (click)="irParaLugaresFavoritos()" class="cardHome">
+      <ion-icon class="card-icon" name="map"></ion-icon>
+      <ion-card-header>
+        <ion-card-title>Lugares favoritos</ion-card-title>
+        <ion-card-subtitle>Para eternizar</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
 
-  <ion-card (click)="irParaListaTarefas()" class="cardHome">
-    <ion-card-header>
-      <ion-card-title>Lista de tarefas</ion-card-title>
-      <ion-card-subtitle>Para se planejar</ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
-
+    <ion-card (click)="irParaListaTarefas()" class="cardHome">
+      <ion-icon class="card-icon" name="create"></ion-icon>
+      <ion-card-header>
+        <ion-card-title>Lista de tarefas</ion-card-title>
+        <ion-card-subtitle>Para se planejar</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </div>
 </ion-content>

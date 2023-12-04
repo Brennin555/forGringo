@@ -4,11 +4,13 @@
 	<div class="container-login">
 	  <h1 class="titulo-login-cad">Login</h1>
 	  <ion-input [(ngModel)]="email" class="input-login-cad input-login" placeholder="Email">
-		<ion-icon class="icon-login-cad input-login" name="mail" slot="start"></ion-icon>
+		<!-- <ion-icon class="icon-login-cad input-login" name="mail" slot="start"></ion-icon> -->
 	  </ion-input>
-	  <ion-input [(ngModel)]="senha" class="input-login-cad input-login" placeholder="Senha" type="password">
-		<ion-icon class="icon-login-cad" name="key" slot="start"></ion-icon>
-	  </ion-input>
+    <div class="iconeEinput">
+      <!-- <ion-icon class="icon-login-cad" name="key" slot="start"></ion-icon> -->
+      <ion-input [(ngModel)]="senha" class="input-login-cad input-login" placeholder="Senha" type="password">
+      </ion-input>
+    </div>
 	</div>
 	<div class="link">
 	  <a (click)="redefinir()">Esqueci minha senha!</a>

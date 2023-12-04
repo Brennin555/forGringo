@@ -1,0 +1,61 @@
+.titulo-login-cad {
+  margin-top: 19%;
+  margin-left: 6%;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: black;
+  margin-bottom: 4%;
+}
+
+.link {
+  width: 90%;
+  margin: auto;
+  text-align: right;
+}
+
+a {
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 12px;
+  text-decoration: none;
+}
+
+.container-botao {
+  margin-top: 20px;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+
+.p-cadastro {
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  margin-top: 15%;
+  margin-bottom: 5px;
+}
+
+h2 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 55px;
+  margin-bottom: -10px;
+}
+
+.input-login {
+  --padding-start: 4%;
+}
+
+.alinhaIcone{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+
+}
